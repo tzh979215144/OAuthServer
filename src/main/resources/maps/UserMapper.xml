@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.hg.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.hg.domain.User" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="upassword" property="upassword" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    `uid`, uname, upassword, uemail
+  </sql>
+  <insert id="insertSelective" parameterType="com.hg.domain.User" useGeneratedKeys="true" keyProperty="uid" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      uname,
+      upassword,
+      code,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{uname,jdbcType=VARCHAR},
+      #{upassword,jdbcType=VARCHAR},
+      #{code,jdbcType=VARCHAR},
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hg.domain.User" >
+    update user
+    <set >
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `uid` = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>
