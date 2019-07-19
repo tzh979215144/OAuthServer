@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hg.dao.TokenMapper;
+import com.hg.dao.UserMapper;
 import com.hg.domain.Code;
 import com.hg.service.CodeService;
 import com.hg.service.TokenService;
+import com.hg.service.UserService;
 
 import org.springframework.http.HttpStatus;
 
@@ -32,6 +34,8 @@ import org.springframework.http.HttpStatus;
 public class AccessTokenController {
 	
 	
+	@Autowired
+	UserService userervice;
 	@Autowired
 	CodeService codeservice;
 	@Autowired
@@ -58,12 +62,14 @@ public class AccessTokenController {
 			
 			/**
 			 * 判断CODE码是否第一次请求
+			 * 判断客户端SECret是否正确
 			 */
 			int number = codeservice.selectByCode(authCode);
-			if(number!=0) {
+			String pass = "";
+					pass = userervice.selectByCode(authCode);
+			if(number!=0||pass!=clientSecret) {
 				flag = true;
 			}
-//			
 			
 			System.out.println("setLocationUri:"+oauthRequest.getRedirectURI());
 			
@@ -78,7 +84,12 @@ public class AccessTokenController {
 	            if(flag) {
 	            	//如果不是正常的，则将token设置为error，下一层判断token是否为error
 	            	//如果是error，则将与之关联的CODE删除
-	            	accessToken="error";
+	            	if(number!=0) {
+	            		accessToken="errorByNumber";
+	            	}
+	            	if(!pass.equals(clientSecret)) {
+	            		accessToken="errorBySecret";
+	            	}
 	            }
 	            else {
 	            	//如果是正常的请求则，则正常插入访问令牌到数据库

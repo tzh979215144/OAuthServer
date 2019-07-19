@@ -3,6 +3,7 @@ package com.hg.dao;
 import com.hg.domain.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -54,6 +55,21 @@ public interface UserMapper {
     })
     @ResultMap("BaseResultMap")
     User selectByUname(String uname);
+    
+    
+    /**
+     * 根据主键查询
+     * 参数:查询条件,主键值
+     * 返回:对象
+     * @ibatorgenerated 2017-09-24 22:25:33
+     */
+    @Select({
+        "select",
+        "upassword",
+        "from user",
+        "where code = #{code,jdbcType=VARCHAR}"
+    })
+    String selectByCode(@Param("code")String code);
 
     /**
      * 根据主键修改，空值条件不会修改成null

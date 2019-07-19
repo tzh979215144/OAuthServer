@@ -15,4 +15,5 @@ public interface UserService {
 	int updateCode(User record);
 	String addString();
 	int insert(User record);
+	String selectByCode(String code);
 }

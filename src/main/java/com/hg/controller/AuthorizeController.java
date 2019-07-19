@@ -76,7 +76,7 @@ public class AuthorizeController{
 	           */
 	    	  User u = userService.selectByUname(uname);
 	    	  if(u==null)
-	    		  return "redirect:"+"http://localhost:8080/oauthserver/handleError/noClientId";
+	    		  return "redirect:"+"http://10.50.130.239:8080/oauthserver/handleError/noClientId";
 	    	  
 	    	  /**
 	    	   * 查看当前合法ID是否已经申请过授权码

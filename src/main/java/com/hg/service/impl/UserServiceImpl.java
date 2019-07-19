@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
 	public int updateCode(User record) {
 		return userMapper.updateCode(record);
 	}
+	
+	public String selectByCode(String code) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByCode(code);
+	}
 
 	
 }
