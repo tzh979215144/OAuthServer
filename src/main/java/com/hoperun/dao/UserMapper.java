@@ -1,6 +1,6 @@
-package com.hg.dao;
+package com.hoperun.dao;
 
-import com.hg.domain.User;
+import com.hoperun.domain.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -31,7 +31,7 @@ public interface UserMapper {
         "insert into user (uname, upassword)",
         "values (#{uname,jdbcType=VARCHAR}, #{upassword,jdbcType=VARCHAR})"
     })
-    int insert(User record);
+    int insertByUser(User record);
 
     /**
      * 插入，空属性不会插入
@@ -54,7 +54,7 @@ public interface UserMapper {
         "where uname = #{uname,jdbcType=VARCHAR}"
     })
     @ResultMap("BaseResultMap")
-    User selectByUname(String uname);
+    User selectUserByUname(String uname);
     
     
     /**
@@ -69,7 +69,7 @@ public interface UserMapper {
         "from user",
         "where code = #{code,jdbcType=VARCHAR}"
     })
-    String selectByCode(@Param("code")String code);
+    String selectUpasswordByCode(@Param("code")String code);
 
     /**
      * 根据主键修改，空值条件不会修改成null
@@ -92,7 +92,7 @@ public interface UserMapper {
           "code = #{code,jdbcType=VARCHAR}",
         "where `uid` = #{uid,jdbcType=INTEGER}"
     })
-    int updateByPrimaryKey(User record);
+    int updateByUser(User record);
     
     /**
      * 绑定CODE码
@@ -102,6 +102,6 @@ public interface UserMapper {
         "set code = #{code,jdbcType=VARCHAR}",
         "where uid = #{uid,jdbcType=INTEGER}"
     })
-    int updateCode(User record);
+    int updateCodeByUser(User record);
     
 }

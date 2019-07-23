@@ -1,4 +1,4 @@
-package com.hg.utils;
+package com.hoperun.utils;
 import java.util.Random;
 public class CreateRandom {
 

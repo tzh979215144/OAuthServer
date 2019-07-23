@@ -1,4 +1,4 @@
-package com.hg.controller;
+package com.hoperun.controller;
 
 import java.net.URISyntaxException;
 
@@ -21,12 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hg.dao.TokenMapper;
-import com.hg.dao.UserMapper;
-import com.hg.domain.Code;
-import com.hg.service.CodeService;
-import com.hg.service.TokenService;
-import com.hg.service.UserService;
+import com.hoperun.dao.TokenMapper;
+import com.hoperun.dao.UserMapper;
+import com.hoperun.domain.Code;
+import com.hoperun.service.CodeService;
+import com.hoperun.service.TokenService;
+import com.hoperun.service.UserService;
 
 import org.springframework.http.HttpStatus;
 
@@ -64,9 +64,9 @@ public class AccessTokenController {
 			 * 判断CODE码是否第一次请求
 			 * 判断客户端SECret是否正确
 			 */
-			int number = codeservice.selectByCode(authCode);
+			int number = codeservice.selectNumberByCode(authCode);//selectNumberByCode
 			String pass = "";
-					pass = userervice.selectByCode(authCode);
+					pass = userervice.selectUpasswordByCode(authCode);
 			if(number!=0||pass!=clientSecret) {
 				flag = true;
 			}
@@ -93,7 +93,7 @@ public class AccessTokenController {
 	            }
 	            else {
 	            	//如果是正常的请求则，则正常插入访问令牌到数据库
-	            	tokenservice.insertByToken(accessToken, authCode);
+	            	tokenservice.insertByTokenAndCode(accessToken, authCode);
 	            }
 	            response = OAuthASResponse
 	                    .tokenResponse(HttpServletResponse.SC_OK)

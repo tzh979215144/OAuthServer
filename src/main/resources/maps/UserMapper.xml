@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.hg.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.hg.domain.User" >
+<mapper namespace="com.hoperun.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.hoperun.domain.User" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <result column="uname" property="uname" jdbcType="VARCHAR" />
     <result column="upassword" property="upassword" jdbcType="VARCHAR" />
@@ -10,7 +10,7 @@
   <sql id="Base_Column_List" >
     `uid`, uname, upassword, uemail
   </sql>
-  <insert id="insertSelective" parameterType="com.hg.domain.User" useGeneratedKeys="true" keyProperty="uid" >
+  <insert id="insertSelective" parameterType="com.hoperun.domain.User" useGeneratedKeys="true" keyProperty="uid" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       uname,
@@ -23,7 +23,7 @@
       #{code,jdbcType=VARCHAR},
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hg.domain.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hoperun.domain.User" >
     update user
     <set >
       <if test="uname != null" >

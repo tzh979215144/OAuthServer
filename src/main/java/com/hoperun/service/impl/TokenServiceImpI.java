@@ -1,4 +1,4 @@
-package com.hg.service.impl;
+package com.hoperun.service.impl;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hg.dao.*;
-import com.hg.domain.*;
-import com.hg.service.*;
+import com.hoperun.dao.*;
+import com.hoperun.domain.*;
+import com.hoperun.service.*;
 
 /**
  * 
@@ -32,14 +32,14 @@ public class TokenServiceImpI implements  TokenService {
 //	void insertByToken(String Token, String code);
 //	void deleteByCode(String code);
 	
-	public Token selectByToken(String token) {
+	public String selectTokenByToken(String token) {
 		// TODO Auto-generated method stub
-		return tokenMapper.selectByToken(token);
+		return tokenMapper.selectTokenByToken(token);
 		
 	}
 
-	public void insertByToken(String token, String code) {
-		tokenMapper.insertByToken(token, code);
+	public void insertByTokenAndCode(String token, String code) {
+		tokenMapper.insertByTokenAndCode(token, code);
 	}
 	
 	public void deleteByCode(String code) {

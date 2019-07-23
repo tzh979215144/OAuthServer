@@ -1,4 +1,4 @@
-package com.hg.domain;
+package com.hoperun.domain;
 
 import java.io.Serializable;
 

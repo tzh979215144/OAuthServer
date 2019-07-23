@@ -1,4 +1,4 @@
-package com.hg.controller;
+package com.hoperun.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +21,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hg.domain.User;
-import com.hg.service.UserService;
+import com.hoperun.domain.User;
+import com.hoperun.service.UserService;
 
 @Controller
-public class UserInfoController {
+public class ResultInfoController {
 	
 	@Autowired
 	private UserService userService;

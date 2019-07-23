@@ -1,7 +1,7 @@
-package com.hg.dao;
+package com.hoperun.dao;
 
-import com.hg.domain.Code;
-import com.hg.domain.User;
+import com.hoperun.domain.Code;
+import com.hoperun.domain.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -32,7 +32,7 @@ public interface CodeMapper {
         "insert into code (code, number)",
         "values (#{code,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER})"
     })
-    void insertByCode(@Param("code")String code,@Param("number")int number);
+    void insertByCodeAndNumber(@Param("code")String code,@Param("number")int number);
 
     
 
@@ -49,7 +49,7 @@ public interface CodeMapper {
         "where code = #{code,jdbcType=VARCHAR}"
     })
 //    @ResultMap("BaseResultMap")
-    int selectByCode(@Param("code")String code);
+    int selectNumberByCode(@Param("code")String code);
     //User selectByPrimaryKey(Integer uid);
 
 
@@ -65,6 +65,6 @@ public interface CodeMapper {
           "'number' = #{number,jdbcType=INTEGER}",
         "where code = #{code,jdbcType=VARCHAR}"
     })
-    void updateByNumber(@Param("code")String code,@Param("number")int number);
+    void updateByCodeAndNumber(@Param("code")String code,@Param("number")int number);
 //    int updateByPrimaryKey(User record);
 }

@@ -1,8 +1,8 @@
-package com.hg.dao;
+package com.hoperun.dao;
 
-import com.hg.domain.Code;
-import com.hg.domain.Token;
-import com.hg.domain.User;
+import com.hoperun.domain.Code;
+import com.hoperun.domain.Token;
+import com.hoperun.domain.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -33,7 +33,7 @@ public interface TokenMapper {
         "insert into token (token, code)",
         "values (#{token,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR})"
     })
-    void insertByToken(@Param("token")String token, @Param("code")String code);
+    void insertByTokenAndCode(@Param("token")String token, @Param("code")String code);
 
     
 
@@ -49,7 +49,6 @@ public interface TokenMapper {
         "from token",
         "where token = #{token,jdbcType=VARCHAR}"
     })
-    @ResultMap("BaseResultMap")
-    Token selectByToken(@Param("token")String token);
+    String selectTokenByToken(@Param("token")String token);
     //User selectByPrimaryKey(Integer uid);
 }

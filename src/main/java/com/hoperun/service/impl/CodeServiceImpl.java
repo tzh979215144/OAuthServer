@@ -1,4 +1,4 @@
-package com.hg.service.impl;
+package com.hoperun.service.impl;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hg.dao.*;
-import com.hg.domain.*;
-import com.hg.service.*;
+import com.hoperun.dao.*;
+import com.hoperun.domain.*;
+import com.hoperun.service.*;
 
 /**
  * 
@@ -33,19 +33,19 @@ public class CodeServiceImpl implements  CodeService {
 //	void updateByNumber(String code,int number);
 //	void deleteByNumber(int number);
 	
-	public int selectByCode(String code) {
+	public int selectNumberByCode(String code) {
 		// TODO Auto-generated method stub
-		return codeMapper.selectByCode(code);
+		return codeMapper.selectNumberByCode(code);
 		
 	}
 
-	public void insertByCode(String code, int number) {
-		codeMapper.insertByCode(code, number);
+	public void insertByCodeAndNumber(String code, int number) {
+		codeMapper.insertByCodeAndNumber(code, number);
 	}
 	
-	public void updateByNumber(String code,int number) {
+	public void updateByCodeAndNumber(String code,int number) {
 		
-		codeMapper.updateByNumber(code, number);
+		codeMapper.updateByCodeAndNumber(code, number);
 	}
 	public void deleteByNumber(int number) {
 		codeMapper.deleteByNumber(number);

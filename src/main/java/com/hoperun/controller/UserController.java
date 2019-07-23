@@ -1,4 +1,4 @@
-package com.hg.controller;
+package com.hoperun.controller;
 
 import java.util.Date;
 
@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hg.domain.User;
-import com.hg.service.UserService;
-import com.hg.utils.*;
+import com.hoperun.domain.User;
+import com.hoperun.service.UserService;
 
 
 
@@ -31,40 +30,26 @@ import com.hg.utils.*;
 
 @RequestMapping("/user")
 @Controller
-public class UserRegister{
+public class UserController{
 	
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/register")
+	@RequestMapping("/showUser")
 	public ModelAndView toShowUser(){
-		ModelAndView mv = new ModelAndView("showRegister");
-		
-		/**
-		 * 生成随机的用户id和密码
-		 */
-		String uname = CreateRandom.getRandomString(15);
-		System.out.println("uname"+uname);
-		String upassword = CreateRandom.getRandomString(15);
-		System.out.println("upassword"+upassword);
-
-		/**
-		 * 将生成的用户ID和密码存入数据库
-		 */
-		User u = new User();
-		u.setUname(uname);
-		u.setUpassword(upassword);
-		int result = userService.insert(u);
-		System.out.println(result);
-		
-		/**
-		 * 将生成的用户ID和密码发给注册的用户
-		 */
-		mv.addObject("uname", uname);
-		mv.addObject("upassword", upassword);
-		mv.addObject("user", u);
+		User user = userService.selectUserByUname("");
+		String string = userService.addString();
+		ModelAndView mv = new ModelAndView("user01");
+		mv.addObject("user", user);
+		mv.addObject("ok", "ok01");
+		mv.addObject("string", string);
+		System.out.println(user.getUid());
+		System.out.println(user.getUname());
+		System.out.println(user.getUpassword());
+		System.out.println(user.getCode());
 		return mv;
 	}
+	
 	
 	
 }

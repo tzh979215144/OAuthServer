@@ -1,4 +1,4 @@
-package com.hg.controller;
+package com.hoperun.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hg.domain.*;
-import com.hg.service.*;
-import com.hg.utils.CreateRandom;
+import com.hoperun.domain.*;
+import com.hoperun.service.*;
+import com.hoperun.utils.CreateRandom;
 
 
 
@@ -74,7 +74,7 @@ public class AuthorizeController{
 	           * 验证ID
 	           * 【待做】
 	           */
-	    	  User u = userService.selectByUname(uname);
+	    	  User u = userService.selectUserByUname(uname);
 	    	  if(u==null)
 	    		  return "redirect:"+"http://10.50.130.239:8080/oauthserver/handleError/noClientId";
 	    	  
@@ -90,9 +90,9 @@ public class AuthorizeController{
 	        	 * 插入CODE表和user表
 	        	 */
 		          String authorizationCode = CreateRandom.getRandomString(30);
-		          codeService.insertByCode(authorizationCode, 0);
+		          codeService.insertByCodeAndNumber(authorizationCode, 0);
 		          u.setCode(authorizationCode);
-		          userService.updateCode(u);
+		          userService.updateCodeByUser(u);
 //		          System.out.println("错误解决！！");
 		          
 		        //利用oauth授权请求设置responseType，目前仅支持CODE，另外还有TOKEN  

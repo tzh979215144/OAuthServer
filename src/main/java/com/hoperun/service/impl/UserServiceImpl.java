@@ -1,4 +1,4 @@
-package com.hg.service.impl;
+package com.hoperun.service.impl;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hg.dao.UserMapper;
-import com.hg.domain.User;
-import com.hg.service.UserService;
+import com.hoperun.dao.UserMapper;
+import com.hoperun.domain.User;
+import com.hoperun.service.UserService;
 
 /**
  * 
@@ -27,9 +27,9 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 
 
-	public User selectByUname(String uname) {
+	public User selectUserByUname(String uname) {
 		// TODO Auto-generated method stub
-		return userMapper.selectByUname(uname);
+		return userMapper.selectUserByUname(uname);
 		
 	}
 
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 		u.setUname(uname);
 		u.setUpassword(upassword);
 		u.setCode(code);;
-		userMapper.updateByPrimaryKey(u);
+		userMapper.updateByUser(u);
 		return "OK";
 	}
 	
@@ -49,17 +49,17 @@ public class UserServiceImpl implements UserService {
 		return "userServiceAddString";
 	}
 	
-	public int insert(User record) {
-		return userMapper.insert(record);
+	public int insertByUser(User record) {
+		return userMapper.insertByUser(record);
 	}
 	
-	public int updateCode(User record) {
-		return userMapper.updateCode(record);
+	public int updateCodeByUser(User record) {
+		return userMapper.updateCodeByUser(record);
 	}
 	
-	public String selectByCode(String code) {
+	public String selectUpasswordByCode(String code) {
 		// TODO Auto-generated method stub
-		return userMapper.selectByCode(code);
+		return userMapper.selectUpasswordByCode(code);
 	}
 
 	

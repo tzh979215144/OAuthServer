@@ -1,4 +1,4 @@
-package com.hg.controller;
+package com.hoperun.controller;
 
 import java.util.Date;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hg.domain.User;
-import com.hg.service.UserService;
+import com.hoperun.domain.User;
+import com.hoperun.service.UserService;
 
-import com.hg.domain.User;
+import com.hoperun.domain.User;
 @RequestMapping("/user")
 @Controller
 public class UserUpdate {
@@ -35,7 +35,7 @@ public class UserUpdate {
 		//更新user表
 		userService.update(uid, uname, upassword, code);
 
-		User user = userService.selectByUname("f");
+		User user = userService.selectUserByUname("f");
 		mv.addObject("user", user);
 		return mv;
 	}
