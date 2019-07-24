@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%
-String path1 = request.getContextPath();
-response.sendRedirect(path1 + "/login/toLogin.do"); 
-Object oauthRequest = request.getAttribute("oauthRequest");
-
-%> 
+	String path1 = request.getContextPath();
+	response.sendRedirect(path1 + "/login/toLogin.do");
+	Object oauthRequest = request.getAttribute("oauthRequest");
+%>
 
 
 <html>
@@ -13,8 +13,9 @@ Object oauthRequest = request.getAttribute("oauthRequest");
 <!-- Mirrored from www.zi-han.net/theme/hplus/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Mar 2016 12:28:43 GMT -->
 <head>
 
-	<script src="${pageContext.request.contextPath }/js/jquery.min63b9.js" type="text/javascript"></script>
-    <%-- <meta charset="utf-8">
+<script src="${pageContext.request.contextPath }/js/jquery.min63b9.js"
+	type="text/javascript"></script>
+<%-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -37,28 +38,30 @@ Object oauthRequest = request.getAttribute("oauthRequest");
 
 <body>
 
-mavendemo!!
+	mavendemo!!
 
-<button type="button" onclick="login()">用户</button><br>
+	<button type="button" onclick="login()">用户</button>
+	<br>
 
-<button type="button" onclick="getCode()">获取code</button><br>
+	<button type="button" onclick="getCode()">获取code</button>
+	<br>
 
-<script type="text/javascript">
-function login(){
-	//alert("hah");
-	var url = "${pageContext.request.contextPath}";
-	//window.location.href = url+"/user/showUser.do";
-	window.location.href = url+"/responseCode";
-}
+	<script type="text/javascript">
+		function login() {
+			//alert("hah");
+			var url = "${pageContext.request.contextPath}";
+			//window.location.href = url+"/user/showUser.do";
+			window.location.href = url + "/responseCode";
+		}
 
-function getCode(){
-	//alert("hah");
-	var url = "${pageContext.request.contextPath}";
-	//window.location.href = url+"/user/showUser.do";
-	window.location.href = url+"/responseCode";
-}
-</script>
-    
+		function getCode() {
+			//alert("hah");
+			var url = "${pageContext.request.contextPath}";
+			//window.location.href = url+"/user/showUser.do";
+			window.location.href = url + "/responseCode";
+		}
+	</script>
+
 </body>
 
 

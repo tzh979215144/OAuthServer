@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"  pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%-- <%
 String path1 = request.getContextPath();
 response.sendRedirect(path1 + "/login/toLogin.do");  
@@ -11,8 +12,9 @@ response.sendRedirect(path1 + "/login/toLogin.do");
 <!-- Mirrored from www.zi-han.net/theme/hplus/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Mar 2016 12:28:43 GMT -->
 <head>
 
-	<script src="${pageContext.request.contextPath }/js/jquery.min63b9.js" type="text/javascript"></script>
-    <%-- <meta charset="utf-8">
+<script src="${pageContext.request.contextPath }/js/jquery.min63b9.js"
+	type="text/javascript"></script>
+<%-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -35,19 +37,19 @@ response.sendRedirect(path1 + "/login/toLogin.do");
 
 <body>
 
-mavendemo!!
+	mavendemo!!
 
-<button type="button" onclick="login()">用户</button>
+	<button type="button" onclick="login()">用户</button>
 
-<script type="text/javascript">
-function login(){
-	alert("hah");
-	var url = "${pageContext.request.contextPath}";
-	//window.location.href = url+"/user/showUser.do";
-	window.location.href = url+"/responseCode";
-}
-</script>
-    
+	<script type="text/javascript">
+		function login() {
+			alert("hah");
+			var url = "${pageContext.request.contextPath}";
+			//window.location.href = url+"/user/showUser.do";
+			window.location.href = url + "/responseCode";
+		}
+	</script>
+
 </body>
 
 
